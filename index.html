@@ -18,20 +18,27 @@
         function executeAction() {
             var action = document.getElementById("inputField").value;
             
-            // Example of executing a ping command locally
+            // Example of executing a ping-like action locally
             if (action.startsWith("ping ")) {
                 var hostname = action.substring(5); // Extract hostname from input
                 
-                // Execute ping command using JavaScript's Fetch API
-                fetch(`http://localhost:5000/ping?hostname=${hostname}`)
-                    .then(response => response.text())
+                // Use the Fetch API to perform a GET request
+                fetch(`http://${hostname}`)
+                    .then(response => {
+                        // Check if the response status indicates success
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error(`Failed to ping ${hostname}.`);
+                        }
+                    })
                     .then(result => {
-                        // Display result in resultArea
+                        // Display the result in resultArea
                         document.getElementById("resultArea").innerText = result;
                     })
                     .catch(error => {
                         // Display error message in resultArea
-                        document.getElementById("resultArea").innerText = "Error: " + error;
+                        document.getElementById("resultArea").innerText = "Error: " + error.message;
                     });
             } else {
                 // Display unsupported action message in resultArea
