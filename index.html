@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Action Execution</title>
+</head>
+<body>
+    <h1>Local Action Execution</h1>
+    
+    <input type="text" id="inputField" placeholder="Enter action...">
+    <button onclick="executeAction()">Execute</button>
+    
+    <!-- Display area for result -->
+    <div id="resultArea"></div>
+    
+    <script>
+        function executeAction() {
+            var action = document.getElementById("inputField").value;
+            
+            // Example of executing a ping command locally
+            if (action.startsWith("ping ")) {
+                var hostname = action.substring(5); // Extract hostname from input
+                
+                // Execute ping command using JavaScript's Fetch API
+                fetch(`http://localhost:5000/ping?hostname=${hostname}`)
+                    .then(response => response.text())
+                    .then(result => {
+                        // Display result in resultArea
+                        document.getElementById("resultArea").innerText = result;
+                    })
+                    .catch(error => {
+                        // Display error message in resultArea
+                        document.getElementById("resultArea").innerText = "Error: " + error;
+                    });
+            } else {
+                // Display unsupported action message in resultArea
+                document.getElementById("resultArea").innerText = "Unsupported action";
+            }
+        }
+    </script>
+</body>
+</html>
