@@ -3,30 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Process Check</title>
+    <title>Local Command Execution</title>
 </head>
 <body>
-    <h1>Local Process Check</h1>
+    <h1>Local Command Execution</h1>
     
-    <button onclick="checkProcesses()">Check Processes</button>
+    <p>Enter the following command in your terminal or command prompt:</p>
+    <code id="commandDisplay">ls -l</code>
     
-    <!-- Display area for result -->
-    <div id="resultArea"></div>
+    <p>After entering the command, press Enter to execute it.</p>
     
-    <script>
-        function checkProcesses() {
-            // Check if the navigator object is supported
-            if (navigator && navigator.userAgent) {
-                // Get information about the user's platform
-                var platformInfo = navigator.userAgent;
-
-                // Display the platform information in resultArea
-                document.getElementById("resultArea").innerText = "User Platform: " + platformInfo;
-            } else {
-                // Display an error message if navigator object is not supported
-                document.getElementById("resultArea").innerText = "Error: Navigator object not supported.";
-            }
-        }
-    </script>
+    <!-- Additional instructions or input fields can be added as needed -->
 </body>
 </html>
