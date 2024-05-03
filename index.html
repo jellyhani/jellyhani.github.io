@@ -8,11 +8,27 @@
 <body>
     <h1>Local Command Execution</h1>
     
-    <p>Enter the following command in your terminal or command prompt:</p>
-    <code id="commandDisplay">ls -l</code>
+    <p>Enter a command below and press the "Execute" button to run it in your terminal or command prompt:</p>
+    
+    <input type="text" id="commandInput" placeholder="Enter command...">
+    <button onclick="executeCommand()">Execute</button>
     
     <p>After entering the command, press Enter to execute it.</p>
     
-    <!-- Additional instructions or input fields can be added as needed -->
+    <!-- Display area for result -->
+    <div id="resultArea"></div>
+    
+    <script>
+        function executeCommand() {
+            var command = document.getElementById("commandInput").value;
+            
+            // Display the entered command for clarity
+            document.getElementById("commandDisplay").innerText = command;
+            
+            // Additional logic to execute the command (not possible in web browser environment)
+            // This function is just a placeholder since executing shell commands directly from a browser is not possible for security reasons
+            alert("Command executed: " + command);
+        }
+    </script>
 </body>
 </html>
